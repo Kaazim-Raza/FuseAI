@@ -1,20 +1,29 @@
 import httpx
 from typing import Optional
 
-GEMINI_API_URL = "https://api.gemini.example.com/v1/query"  # replace with actual URL
-GEMINI_API_KEY = "your_gemini_api_key_here"  # Put in env vars or config in real app
+GEMINI_API_KEY = "AIzaSyD5z_a96bkNGNlSnuYD0yC4eZVubJ8XAhw"  # Put in env vars or config in real app
 
-async def query_gemini_api(query: str, context: str) -> str:
+GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
+
+async def query_gemini_api(query: str, context: str = "") -> str:
     headers = {
-        "Authorization": f"Bearer {GEMINI_API_KEY}",
         "Content-Type": "application/json"
     }
-    json_data = {
-        "query": query,
-        "context": context
+
+    payload = {
+        "contents": [
+            {
+                "parts": [
+                    {"text": f"{context}\n\n{query}"}
+                ]
+            }
+        ]
     }
-    async with httpx.AsyncClient() as client:
-        response = await client.post(GEMINI_API_URL, json=json_data, headers=headers, timeout=30)
+
+    timeout = httpx.Timeout(30.0)  # 30 seconds total timeout
+
+    async with httpx.AsyncClient(timeout=timeout) as client:
+        response = await client.post(GEMINI_API_URL, json=payload, headers=headers)
         response.raise_for_status()
         data = response.json()
-        return data.get("response", "No response from Gemini API")
+        return data["candidates"][0]["content"]["parts"][0]["text"]
