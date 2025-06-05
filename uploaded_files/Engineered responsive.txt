@@ -1,0 +1,12 @@
+Engineered responsive UIs using HTML, CSS, and JavaScript; elevated user engagement by 30% across all devices, enhancing
+overall user experience
+Collaborated closely with the design team to translate detailed UI/UX designs into highly functional interfaces; resulted in a
+25% improvement in design fidelity and user experience quality
+Resolved complex frontend issues and optimized website performance through rigorous testing and debugging; achieved a
+notable 20% reduction in bounce rates and improved user retention rates
+Contributed effectively to Agile development sprints and participated in daily stand-ups and retrospective meetings; fostered a
+15% increase in team efficiency and successful project deliveries
+Spearheaded the complete redesign of the landing page, implementing modern design principles and user feedback; drove a
+remarkable 35% increase in user engagement metrics
+Enhanced website loading speed by 40% through the implementation of code optimization techniques, image compression,
+and leveraging browser caching resulted in a 20% increase in website accessibility

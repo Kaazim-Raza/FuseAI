@@ -7,6 +7,7 @@ router = APIRouter(prefix="/files", tags=["files"])
 @router.post("/upload")
 async def upload(files: List[UploadFile] = File(...)):
     saved_files = save_files(files)
+    print(f"Saved files: {saved_files}")
     return {"uploaded_files": saved_files}
 
 @router.get("/")
